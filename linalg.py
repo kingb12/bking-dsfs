@@ -37,8 +37,9 @@ def scalar_multiply(scalar: float, v: Vector) -> Vector:
 
 def vector_mean(vs: List[Vector]) -> Vector:
     """element-wise average of a list of vectors"""
-    # add all the vectors and multiply by 1/n
-    return scalar_multiply(1/len(vs), vector_sum(vs))
+    # multiply by 1/n and add all the vectors (this order prevents overflow on addition of many vectors)
+    scaled_vs = [scalar_multiply(1/len(vs), v) for v in vs]
+    return vector_sum(scaled_vs)
 
 
 def dot(v: Vector, w: Vector) -> float:
