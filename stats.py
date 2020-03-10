@@ -94,7 +94,10 @@ def covariance(xs: Vector, ys: Vector) -> float:
 
 
 def correlation(xs: Vector, ys: Vector) -> float:
-    """return the correlation of two vectors"""
+    """
+    return the Pearson correlation-coefficient of two vectors (a value in [-1, 1] that indicates correlation
+    strength. This can be thought of as covariance normalized by the standard deviations of each vector
+    """
     cov = covariance(xs, ys)
     std_x = standard_deviation(xs)
     std_y = standard_deviation(ys)
