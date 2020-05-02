@@ -24,7 +24,7 @@ def train_test_split(xs: List[X], ys: List[Y], proportion_train: float) -> Tuple
     the training set,return a tuple with the dataset split into train, test appropriately. Shallow-copies dataset.
     """
     assert len(xs) == len(ys), 'number of inputs and outputs should be the same'
-    train_indices, test_indices = split_data(range(len(xs)), proportion_train)
+    train_indices, test_indices = split_data(list(range(len(xs))), proportion_train)
     xs, ys = copy.copy(xs), copy.copy(ys)
     return ([xs[i] for i in train_indices],
             [xs[i] for i in test_indices],

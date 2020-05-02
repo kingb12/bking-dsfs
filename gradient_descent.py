@@ -29,13 +29,13 @@ def estimate_gradient(f: Callable[[Vector], float], xs: Vector, h: float = 10**-
     return [partial_diff_quotient(f, xs, i, h) for i in range(len(xs))]
 
 
-def gradient_step(xs: Vector, gradient: Vector, step_size: float) -> Vector:
+def gradient_step(v: Vector, gradient: Vector, step_size: float) -> Vector:
     """
     Moves `step_size` along the gradient of f w.r.t. xs, returning a input
     """
-    assert len(xs) == len(gradient)
+    assert len(v) == len(gradient)
     update = scalar_multiply(step_size, gradient)
-    return add(xs, update)
+    return add(v, update)
 
 
 def sum_of_squares_gradient(xs: Vector) -> Vector:
