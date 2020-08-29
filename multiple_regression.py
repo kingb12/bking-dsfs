@@ -78,11 +78,11 @@ def multiple_r_squared(xs: List[Vector], ys: Vector, beta: Vector) -> float:
     return predicted_y_variance / explained_y_variance
 
 
-def bootstrap_sample(xs: List[X]) -> List[X]:
+def bootstrap_sample(xs: List[X], n: int = 0) -> List[X]:
     """
     Sample a dataset with replacement to get a sub-sample
     """
-    return [random.choice(xs) for _ in xs]
+    return [random.choice(xs) for _ in (range(n) if n > 0 else xs)]
 
 
 def bootstrap_statistic(xs: List[X], stats_fn: Callable[[List[X]], Stat], num_samples: int) -> List[Stat]:
